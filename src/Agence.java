@@ -13,7 +13,7 @@ public class Agence extends Lieu{
     private int nbsalaries;
     private LieuFormation LF;
     
-    public Agence(String id, String name, int codepostale, int longitude, int latitude, int nbsalaries, LieuFormation LF) {
+    public Agence(String id, String name, int codepostale, float longitude, float latitude, int nbsalaries, LieuFormation LF) {
         super(id, name, codepostale, longitude, latitude);
         this.nbsalaries = nbsalaries;
         this.LF = LF;
@@ -39,8 +39,8 @@ public class Agence extends Lieu{
     public String toString() {
         return "Agence{" + this.name + "}\t"
                 + "{Nombre salaries : " + this.nbsalaries + "}\t"
-                + "{Lieu Formation : " + this.LF.getName() + "}\t"
-                + "{Distance : " + this.distance(this.LF) + "km}";
+                + "{Lieu Formation : " + "this.LF.getName()" + "}\t"
+                + "{Distance : " + "this.distance(this.LF)" + "km}";
     }
     
 }
