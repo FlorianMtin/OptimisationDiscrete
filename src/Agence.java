@@ -26,5 +26,13 @@ public class Agence extends Lieu{
     public void setNbsalaries(int nbsalaries) {
         this.nbsalaries = nbsalaries;
     }
+
+    public LieuFormation getLF() {
+        return LF;
+    }
+
+    public void setLF(LieuFormation LF) {
+        this.LF = LF;
+    }
     
 }

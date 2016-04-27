@@ -36,5 +36,21 @@ public class LieuFormation extends Lieu{
     public void setNbaccueillis(int nbaccueillis) {
         this.nbaccueillis = nbaccueillis;
     }
+
+    public List<Agence> getLA() {
+        return LA;
+    }
+
+    public void setLA(List<Agence> LA) {
+        this.LA = LA;
+    }
+
+    public boolean isOpen() {
+        return open;
+    }
+
+    public void setOpen(boolean open) {
+        this.open = open;
+    }
     
 }
