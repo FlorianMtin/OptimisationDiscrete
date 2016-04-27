@@ -17,5 +17,13 @@ public class LieuFormation extends Lieu{
         super(name, codepostale, longitude, latitude);
         this.nbaccueillis = 0;
     }
+
+    public int getNbaccueillis() {
+        return nbaccueillis;
+    }
+
+    public void setNbaccueillis(int nbaccueillis) {
+        this.nbaccueillis = nbaccueillis;
+    }
     
 }
