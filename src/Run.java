@@ -27,8 +27,10 @@ public class Run {
 					line = br.readLine();
 					if (line != null) {
 						word = line.split(";");
-						LieuFormation current = new LieuFormation(word[0], Integer.parseInt(word[1]),
-								Integer.parseInt(word[2]), Integer.parseInt(word[3]));
+
+						String cp = word[2].replaceAll("\"", "").substring(0, 5);
+						LieuFormation current = new LieuFormation(word[0], word[1], Integer.parseInt(cp),
+								Float.parseFloat(word[3]), Float.parseFloat(word[4]));
 						ListFormation.add(current);
 					}
 
@@ -44,7 +46,7 @@ public class Run {
 
 			}
 
-			f = new File("src/Database/LieuxPossibles.txt");
+			f = new File(choice);
 			fr = new FileReader(f);
 			br = new BufferedReader(fr);
 
@@ -56,8 +58,9 @@ public class Run {
 					line = br.readLine();
 					if (line != null) {
 						word = line.split(";");
-						Agence current = new Agence(word[0], Integer.parseInt(word[1]), Integer.parseInt(word[2]),
-								Integer.parseInt(word[3]), Integer.parseInt(word[4]), null);
+						String cp = word[2].replaceAll("\"", "").substring(0, 5);
+						Agence current = new Agence(word[0], word[1], Integer.parseInt(cp), Float.parseFloat(word[3]),
+								Float.parseFloat(word[4]), Integer.parseInt(word[5]), null);
 						ListAgence.add(current);
 					}
 
@@ -74,6 +77,8 @@ public class Run {
 		} catch (FileNotFoundException exception) {
 			System.out.println("Le fichier n'a pas été trouvé");
 		}
+
+		System.out.println(ListAgence.get(0).toString());
 
 	}
 }

@@ -22,8 +22,8 @@ public class LieuFormation extends Lieu{
     private List<Agence> LA;
     private boolean open;
     
-    public LieuFormation(String name, int codepostale, int longitude, int latitude) {
-        super(name, codepostale, longitude, latitude);
+    public LieuFormation(String id, String name, int codepostale, float longitude, float latitude) {
+        super(id, name, codepostale, longitude, latitude);
         this.nbaccueillis = 0;
         LA = new ArrayList();
         open = false;
