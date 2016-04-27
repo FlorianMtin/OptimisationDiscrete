@@ -52,5 +52,13 @@ public class LieuFormation extends Lieu{
     public void setOpen(boolean open) {
         this.open = open;
     }
+
+    @Override
+    public String toString() {
+        return "LieuFormation{" + this.name + "}\t"
+                + "{" + this.open + "}\t"
+                + "{Accueil : " + this.nbaccueillis + "}\t"
+                + "{Nombre Agences : " + this.getLA().size() + "}";
+    }
     
 }

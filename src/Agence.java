@@ -34,5 +34,13 @@ public class Agence extends Lieu{
     public void setLF(LieuFormation LF) {
         this.LF = LF;
     }
+
+    @Override
+    public String toString() {
+        return "Agence{" + this.name + "}\t"
+                + "{Nombre salaries : " + this.nbsalaries + "}\t"
+                + "{Lieu Formation : " + this.LF.getName() + "}\t"
+                + "{Distance : " + this.distance(this.LF) + "km}";
+    }
     
 }
