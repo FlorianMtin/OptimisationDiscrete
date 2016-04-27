@@ -13,9 +13,11 @@ public abstract class Lieu {
     protected float latitude;
     protected int codepostale;
     protected String name;
+    protected String id;
     
-    public Lieu (String name, int codepostale, int longitude, int latitude)
+    public Lieu (String id, String name, int codepostale, int longitude, int latitude)
     {
+        this.id = id;
         this.name = name;
         this.codepostale = codepostale;
         this.longitude = longitude;
@@ -65,4 +67,13 @@ public abstract class Lieu {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    
 }
