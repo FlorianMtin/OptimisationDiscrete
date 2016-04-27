@@ -13,9 +13,9 @@ public class LieuFormation extends Lieu{
     public static final int _CAPACITEMAXIMALE_ = 60;
     private int nbaccueillis;
     
-    public LieuFormation(String name, int codepostale, int longitude, int latitude, int nbaccueillis) {
+    public LieuFormation(String name, int codepostale, int longitude, int latitude) {
         super(name, codepostale, longitude, latitude);
-        this.nbaccueillis = nbaccueillis;
+        this.nbaccueillis = 0;
     }
     
 }
