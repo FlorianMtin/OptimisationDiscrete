@@ -56,9 +56,9 @@ public class Run {
 					line = br.readLine();
 					if (line != null) {
 						word = line.split(";");
-						LieuFormation current = new LieuFormation(word[0], Integer.parseInt(word[1]),
-								Integer.parseInt(word[2]), Integer.parseInt(word[3]));
-						ListFormation.add(current);
+						Agence current = new Agence(word[0], Integer.parseInt(word[1]), Integer.parseInt(word[2]),
+								Integer.parseInt(word[3]), Integer.parseInt(word[4]), null);
+						ListAgence.add(current);
 					}
 
 					else
