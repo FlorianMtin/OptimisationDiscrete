@@ -24,8 +24,6 @@ public abstract class Lieu {
     
     public int distance (Lieu autreLieu)
     {
-        
-        
         double R = 6371; //Rayon de la Terre moyen
         double a = Math.toRadians(this.latitude);
         double b = Math.toRadians(autreLieu.latitude);
@@ -34,5 +32,37 @@ public abstract class Lieu {
 
         double dist = Math.sin(d/2)*Math.sin(d)/2+Math.cos(a)*Math.cos(b)*Math.sin(c/2)*Math.sin(c/2);
         return (int) ((int) R * (2 * Math.atan2(Math.sqrt(dist), Math.sqrt(1 - dist))));
+    }
+
+    public float getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(float longitude) {
+        this.longitude = longitude;
+    }
+
+    public float getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(float latitude) {
+        this.latitude = latitude;
+    }
+
+    public int getCodepostale() {
+        return codepostale;
+    }
+
+    public void setCodepostale(int codepostale) {
+        this.codepostale = codepostale;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

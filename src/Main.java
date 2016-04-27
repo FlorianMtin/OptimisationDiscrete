@@ -1,3 +1,4 @@
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -24,22 +25,22 @@ public class Main {
 
 		do {
 			switch (choice) {
-			case "a" :				
+			case "a":
 				myRun.run("src/Database/ListeAgences_100.txt");
 				break;
-				
-			case "b" :				
+
+			case "b":
 				myRun.run("src/Database/ListeAgences_300.txt");
 				break;
-			
-			case "c" :				
+
+			case "c":
 				myRun.run("src/Database/ListeAgences_500.txt");
-				break;		
-			
+				break;
+
 			/*
 			 * Remplacer Votrefichier par le nom de votre fichier txt
 			 */
-			case "d" :							
+			case "d":
 				myRun.run("src/Database/Votrefichier.txt");
 				break;
 			}
