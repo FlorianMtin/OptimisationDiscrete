@@ -16,5 +16,13 @@ public class Agence extends Lieu{
         super(name, codepostale, longitude, latitude);
         this.nbsalaries = nbsalaries;
     }
+
+    public int getNbsalaries() {
+        return nbsalaries;
+    }
+
+    public void setNbsalaries(int nbsalaries) {
+        this.nbsalaries = nbsalaries;
+    }
     
 }
