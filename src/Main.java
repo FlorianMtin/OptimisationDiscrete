@@ -7,16 +7,18 @@ import java.util.Scanner;
 
 public class Main {
 
-	// public ArrayList<Agence> ListAgence;
-	// public ArrayList<LieuFormation> ListFormation;
+	public ArrayList<Agence> ListAgence;
+	public ArrayList<LieuFormation> ListFormation;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		// Mise en place de l'algo et lancement du Run
 		System.out.println("Faire quel test?  ");
-		System.out.println("a : ");
-		System.out.println("?: Display");
-		System.out.println("q: Quit");
+		System.out.println("a : Test avec le jeu de 100 Agences");
+		System.out.println("b: Test avec le jeu de 300 Agences");
+		System.out.println("c : Test avec le jeu de 500 Agences");
+		System.out.println("d : Test avec le jeu de 500 Agences");
+		System.out.println("e : Quitter");
 		Scanner scan = new Scanner(System.in);
 		String choice = scan.nextLine();
 
@@ -49,6 +51,15 @@ public class Main {
 				System.out.println("Erreur lors de la lecture : " + exception.getMessage());
 
 			}
+			
+			do {
+				switch(choice){
+					
+				}
+				
+			}while(choice == "e");
+			
+			
 			
 			
 
