@@ -5,6 +5,7 @@ public class Tabou {
 	private ArrayList<Agence> listeTabou = new ArrayList<Agence>();
 	private ArrayList<Integer> valueVoisinage = new ArrayList<Integer>();
 	private ArrayList<Agence> meilleurSolution = new ArrayList<Agence>();
+	private ArrayList<LieuFormation> meilleurSolutionF = new ArrayList<LieuFormation>();
 	private int iteration;
 	private int tailleTabou;
 	private float meilleurResultat = 0;
@@ -27,11 +28,12 @@ public class Tabou {
 		solutionInit(LA, LF); // On répartie aléatoirement les agences dans les
 								// lieux de formation
 		Integer indiceElu;
+		meilleurSolutionF.addAll(LF);
 		ArrayList<Agence> temp = new ArrayList<Agence>();
 		for (int i = 0; i < iteration; i++) {
 
-			temp = LA;
-			temp.getVoisinage(valueVoisinage);
+			temp.addAll(LA);
+		    temp.getVoisinage(valueVoisinage);
 			indiceElu = meilleurVoisin(valueVoisinage);
 
 			if (valueVoisinage.get(indiceElu) > meilleurResultat) {
