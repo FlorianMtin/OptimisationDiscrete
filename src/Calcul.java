@@ -16,7 +16,7 @@ public class Calcul {
     
     public static final double _COUTKILOMETRE_ = 0.4;
     
-    public int prix (List<LieuFormation> LLF){
+    public double prix (List<LieuFormation> LLF){
         double prix = 0;
         
         for (LieuFormation LF : LLF){
@@ -31,7 +31,7 @@ public class Calcul {
             }
         }
         
-        return (int) prix;
+        returns prix;
     }
     
 }
