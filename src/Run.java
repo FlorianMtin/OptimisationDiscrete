@@ -85,11 +85,12 @@ public class Run {
 		System.out.println("Rentrez la taille du tableau Tabou voulu : \n ");
 		Scanner scan2 = new Scanner(System.in);
 		int size = Integer.parseInt(scan.nextLine());
-		Tabou tab = new Tabou(ite,size);
-		tab.runTabou(ListAgence, ListFormation);
+		Tabou tab = new Tabou(ite,size,ListAgence, ListFormation);
+		tab.runTabou();
 		
 
 		
 
+		
 	}
 }

@@ -1,18 +1,12 @@
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		// Mise en place de l'algo et lancement du Run
-
+/*
 		System.out.println("Faire quel test?  ");
 		System.out.println("a : Test avec le jeu de 100 Agences");
 		System.out.println("b: Test avec le jeu de 300 Agences");
@@ -39,14 +33,23 @@ public class Main {
 
 			/*
 			 * Remplacer Votrefichier par le nom de votre fichier txt
-			 */
+			 *//*
 			case "d":
 				myRun.run("src/Database/Votrefichier.txt");
 				break;
 			}
 
 		} while (choice == "e");
-
+*/
+		ArrayList<Agence> test = new ArrayList<Agence>();
+        Agence A = new Agence("t", "t", 10, 10, 10, 0, null);
+        Agence B = new Agence("c", "c", 10, 10, 10, 0, null);
+        test.add(A);
+        test.add(B);
+        ArrayList<Agence> LA = ((List) ((ArrayList) test).clone());
+        System.out.println(test.get(0).toString());
+        LA.get(0).setName("b");
+        System.out.println(test.get(0).toString());
 	}
 	
 	

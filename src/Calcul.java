@@ -16,7 +16,7 @@ public class Calcul {
     
     public static final double _COUTKILOMETRE_ = 0.4;
     
-    public int prix (List<LieuFormation> LLF){
+    public static double prix (List<LieuFormation> LLF){
         double prix = 0;
         
         for (LieuFormation LF : LLF){
@@ -31,7 +31,26 @@ public class Calcul {
             }
         }
         
-        return (int) prix;
+        return  prix;
+    }
+    
+    public static double prixLA(List<Agence> LA){
+    	double prix = 0; 
+    	List<LieuFormation> LFF = new ArrayList<LieuFormation>();
+    	for (Agence a : LA){
+    		if (LFF.contains(a.getLF())){
+    			prix += a.getNbsalaries() * 2 * a.distance(a.getLF()) * _COUTKILOMETRE_;
+    		}
+    		
+    		else {
+    			LFF.add(a.getLF());
+    			prix += LieuFormation._COUTFORMATEUR;
+                prix += LieuFormation._COUTLOCATION;
+                prix += a.getNbsalaries() * 2 * a.distance(a.getLF()) * _COUTKILOMETRE_;
+    			
+    		}
+    	}
+    	return prix;
     }
     
 }

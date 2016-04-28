@@ -42,8 +42,8 @@ public class Agence extends Lieu {
     public String toString() {
         return "Agence{" + this.name + "}\t"
                 + "{Nombre salaries : " + this.nbsalaries + "}\t"
-                + "{Lieu Formation : " + this.LF.getName() + "}\t"
-                + "{Distance : " + this.distance(this.LF) + "km}";
+                + "{Lieu Formation : " + "this.LF.getName()" + "}\t"
+                + "{Distance : " + "this.distance(this.LF)" + "km}";
     }
 
     public boolean peutAller(LieuFormation LF) {
