@@ -56,7 +56,10 @@ public class Tabou {
 	}
 
 	public void solutionInit(ArrayList<Agence> LA, ArrayList<LieuFormation> LF) {
-
+            for (Agence A : LA){
+                int random = (int)(LF.size()*Math.random());
+                A.changementAffectation(LF.get(random));
+            }
 	}
 
 	public int meilleurVoisin(ArrayList<Integer> value) {
