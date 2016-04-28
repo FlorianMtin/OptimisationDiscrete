@@ -1,0 +1,23 @@
+"bulson";"Bulson";"08450";4.91667;49.6333;8
+"berling";"Berling";"57370";7.25;48.8;4
+"castelnou";"Castelnou";"66300";2.7;42.6167;7
+"saint-jean-de-losne";"Saint-Jean-de-Losne";"21170";5.25;47.1;4
+"vaux-et-chantegrue";"Vaux-et-Chantegrue";"25160";6.25;46.8;9
+"vallee-55";"Vallée";"55260";5.33333;48.8167;9
+"nannay";"Nannay";"58350";3.2;47.2667;2
+"moussages";"Moussages";"15380";2.48333;45.2333;8
+"saint-just-pres-brioude";"Saint-Just-près-Brioude";"43100";3.36667;45.2333;9
+"eysson";"Eysson";"25530";6.43333;47.2;2
+"saint-martin-sous-montaigu";"Saint-Martin-sous-Montaigu";"71640";4.71667;46.8167;4
+"mael-pestivien";"Maël-Pestivien";"22160";-3.3;48.3833;5
+"urgons";"Urgons";"40320";-0.45;43.65;9
+"tredaniel";"Trédaniel";"22510";-2.61667;48.3667;6
+"port-saint-louis-du-rhone";"Port-Saint-Louis-du-Rhône";"13230";4.8;43.3833;10
+"blandin";"Blandin";"38730";5.45;45.4667;8
+"arcomps";"Arcomps";"18200";2.43333;46.6833;3
+"montbronn";"Montbronn";"57410";7.31667;48.9833;7
+"bastide-66";"La Bastide";"66110";2.58333;42.55;7
+"neuville-les-this";"Neuville-lès-This";"08090";4.6;49.75;3
+"espinasse-63";"Espinasse";"63390";2.71111;46.0378;9
+"clelles";"Clelles";"38930";5.61667;44.8333;4
+"port-marly";"Le Port-Marly";"78560";2.11667;48.8833;10

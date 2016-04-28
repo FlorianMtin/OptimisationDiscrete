@@ -6,11 +6,13 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		// Mise en place de l'algo et lancement du Run
+		boolean stop = false;
+		while (!stop){
 
 
 		System.out.println("Faire quel test?  ");
 		System.out.println("a : Test avec le jeu de 100 Agences");
-		System.out.println("b: Test avec le jeu de 300 Agences");
+		System.out.println("b : Test avec le jeu de 300 Agences");
 		System.out.println("c : Test avec le jeu de 500 Agences");
 		System.out.println("d : Test avec votre jeu d'Agences");
 		System.out.println("e : Quitter \n ");
@@ -33,18 +35,25 @@ public class Main {
 				break;
 
 			/*
-			 * Remplacer Votrefichier par le nom de votre fichier txt
+			 * si vous voulez remplacer le code pour mettre votre fichier, ou alors utilisez le menu dans la console.
 
 			 */
 			case "d":
-
-				myRun.run("src/Database/Votrefichier.txt");
+				
+				System.out.println("Nom de votre fichier (sans .txt)");
+				Scanner scan2 = new Scanner(System.in);
+				String Votrefichier = scan.nextLine();
+				
+				myRun.run("src/Database/"+Votrefichier+".txt");
 				break;
 			}
 
 		} while (choice == "e");
+		
+		if (choice == "e") stop = true;
 
-		 
+		
+		} 
 
 	}
 	

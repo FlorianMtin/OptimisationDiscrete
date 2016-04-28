@@ -54,7 +54,7 @@ public class Agence extends Lieu {
 
 			}
 			if (LLF.get(i).peutAccueillir(this)) {
-				if (ouvert < 1 || LLF.get(i).distance(this) < 100) {
+				if (ouvert <= 1 || LLF.get(i).distance(this) <= 100) {
 					voisinage.add(i);
 				}
 			}

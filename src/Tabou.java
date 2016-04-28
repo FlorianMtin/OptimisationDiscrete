@@ -8,13 +8,13 @@ public class Tabou {
 	private int iteration;
 	private int tailleTabou;
 	private ArrayList<Integer> listTabou = new ArrayList<Integer>();
-	private int[] solutionActuelle = new int[LA.size()];
-	private int[] bestSolution = new int[LA.size()];
-	private int[] voisinage = new int[LA.size()]; // tableau renvoyant le
+	private int[] solutionActuelle;
+	private int[] bestSolution;
+	private int[] voisinage; // tableau renvoyant le
 													// changement de
 													// l'entreprise avec son
 													// lieu de formation
-	private double[] valueVoisin = new double[LA.size()];
+	private double[] valueVoisin;
 	private double bestPrice;
 	private int bestVoisin; // indice de l'entreprise choisis pour le changement
 
@@ -26,6 +26,10 @@ public class Tabou {
 		this.tailleTabou = tailleT;
 		this.LA = LA;
 		this.LFF = LF;
+		this.solutionActuelle = new int[LA.size()];
+		this.bestSolution  = new int[LA.size()];
+		this.voisinage  = new int[LA.size()];
+		this.valueVoisin = new double[LA.size()];
 
 	}
 
@@ -39,14 +43,14 @@ public class Tabou {
 		bestSolution = solutionActuelle.clone();
 
 		for (int x = 0; x < iteration; x++) {
-
+			if (listTabou.size() == LA.size()) break; // cas ou la liste tabou est pleine et que sa taille vaut le nombre d'Agence
 			for (int i = 0; i < voisinage.length; i++) {
 				voisinage[i] = getVoisinage(i);
 			}
 
 			bestVoisin = meilleurVoisin();
 
-			if (valueVoisin[bestVoisin] > bestPrice) {
+			if (valueVoisin[bestVoisin] >= bestPrice) {
 				if (listTabou.size() == tailleTabou) {
 					listTabou.remove(0);
 					listTabou.add(bestVoisin);
@@ -64,10 +68,12 @@ public class Tabou {
 			}
 
 			solutionActuelle[bestVoisin] = voisinage[bestVoisin];
+			
+			System.out.println( " itération numéro : " + x + " avec un BestPrice de : " + bestPrice + " et un value voisin : " + valueVoisin[bestVoisin]);
 
 		}
 		
-		System.out.println( " L'algo tabou trouve le comme coût : " + bestPrice);
+		System.out.println( " L'algo tabou trouve comme coût : " + bestPrice);
 		
 
 	}
@@ -79,7 +85,8 @@ public class Tabou {
 		ArrayList<Integer> formationProche = new ArrayList<Integer>();
 		formationProche = LA.get(i).getVoisin(LFF, solutionActuelle, i);
 		int[] temp = solutionActuelle.clone();
-		temp[i] = formationProche.get(0);
+		int random = (int) (formationProche.size() * Math.random());
+		temp[i] = formationProche.get(random);
 		double prix = Calcul.prix(temp, LA, LFF);
 		valueVoisin[i] = prix; // on ajoute dans le tableau des voisinages la
 								// valeur du prix lié avec le lieu de formation
