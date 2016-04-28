@@ -7,7 +7,6 @@ import java.util.List;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Adrien
@@ -55,22 +54,27 @@ public class Agence extends Lieu {
         if (!this.peutAller(LF) || LF == this.LF) {
             return false;
         }
-        this.LF.remove(this);
+        if (this.LF != null) {
+            this.LF.remove(this);
+        }
         this.LF = LF;
         this.LF.add(this);
-        
+
         return true;
     }
+
     
     public ArrayList<LieuFormation> getVoisin (List<LieuFormation> LLF){
         ArrayList<LieuFormation> Voisinage = new ArrayList();
         
         for (LieuFormation LF : LLF){
             if (LF != this.LF && (LF.isOpen() || (this.distance(LF) < 100))){
-                Voisinage.add(LF);
+
+
+                   Voisinage.add(LF);
             }
         }
-        
+
         return Voisinage;
     }
 }
