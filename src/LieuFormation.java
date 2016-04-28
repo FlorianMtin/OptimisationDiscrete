@@ -7,21 +7,20 @@ import java.util.List;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Adrien
  */
-public class LieuFormation extends Lieu{
+public class LieuFormation extends Lieu {
 
     public static final int _CAPACITEMAXIMALE_ = 60;
     public static final int _COUTFORMATEUR = 2000;
     public static final int _COUTLOCATION = 1000;
-    
+
     private int nbaccueillis;
     private List<Agence> LA;
     private boolean open;
-    
+
     public LieuFormation(String id, String name, int codepostale, float longitude, float latitude) {
         super(id, name, codepostale, longitude, latitude);
         this.nbaccueillis = 0;
@@ -60,25 +59,35 @@ public class LieuFormation extends Lieu{
                 + "{Accueil : " + this.nbaccueillis + "}\t"
                 + "{Nombre Agences : " + this.getLA().size() + "}";
     }
-    
-    
-    
-   
-    public boolean peutAccueillir (Agence A){
-        return _CAPACITEMAXIMALE_ - this.nbaccueillis < A.getNbsalaries() ?  false : true;
+
+    public boolean peutAccueillir(Agence A) {
+        return _CAPACITEMAXIMALE_ - this.nbaccueillis < A.getNbsalaries() ? false : true;
     }
-    
-    public boolean add (Agence A){
-        if (this.peutAccueillir(A) == false || this.LA.contains(A)) {
+
+    public boolean add(Agence A) {
+        if (!this.peutAccueillir(A) || this.LA.contains(A)) {
             return false;
         }
-        if (!this.open){
+        if (!this.open) {
             this.open = true;
         }
         this.LA.add(A);
         this.nbaccueillis += A.getNbsalaries();
         A.changementAffectation(this);
-        
+
+        return true;
+    }
+
+    public boolean remove(Agence A) {
+        if (!this.LA.contains(A)) {
+            return false;
+        }
+        this.LA.remove(A);
+        this.nbaccueillis -= A.getNbsalaries();
+        if (this.nbaccueillis == 0) {
+            this.open = false;
+        }
+
         return true;
     }
 }

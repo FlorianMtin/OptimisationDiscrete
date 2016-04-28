@@ -1,3 +1,7 @@
+
+import java.util.ArrayList;
+import java.util.List;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -48,15 +52,25 @@ public class Agence extends Lieu {
     }
 
     public boolean changementAffectation(LieuFormation LF) {
-        if (this.peutAller(LF) == false || LF == this.LF) {
+        if (!this.peutAller(LF) || LF == this.LF) {
             return false;
         }
-        if (!LF.isOpen()) {
-            LF.setOpen(true);
-        }
-        this.setLF(LF);
+        this.LF.remove(this);
+        this.LF = LF;
         this.LF.add(this);
         
         return true;
+    }
+    
+    public List<Lieu> getVoisin (List<LieuFormation> LLF){
+        ArrayList<Lieu> Voisinage = new ArrayList();
+        
+        for (LieuFormation LF : LLF){
+            if (LF != this.LF && (LF.isOpen() || (this.distance(LF) < 100))){
+                Voisinage.add(LF);
+            }
+        }
+        
+        return Voisinage;
     }
 }
