@@ -13,70 +13,52 @@ import java.util.List;
  */
 public class Agence extends Lieu {
 
-    private int nbsalaries;
-    private LieuFormation LF;
+	private int nbsalaries;
 
-    public Agence(String id, String name, int codepostale, float longitude, float latitude, int nbsalaries, LieuFormation LF) {
-        super(id, name, codepostale, longitude, latitude);
-        this.nbsalaries = nbsalaries;
-        this.LF = LF;
-    }
-    
-    public Agence(Agence A){
-        super(A.getId(), A.getName(), A.getCodepostale(), A.getLongitude(), A.getLatitude());
-        this.nbsalaries = A.getNbsalaries();
-        this.LF = null;
-    }
+	public Agence(String id, String name, int codepostale, float longitude, float latitude, int nbsalaries) {
+		super(id, name, codepostale, longitude, latitude);
+		this.nbsalaries = nbsalaries;
 
-    public int getNbsalaries() {
-        return nbsalaries;
-    }
+	}
 
-    public void setNbsalaries(int nbsalaries) {
-        this.nbsalaries = nbsalaries;
-    }
+	public int getNbsalaries() {
+		return nbsalaries;
+	}
 
-    public LieuFormation getLF() {
-        return LF;
-    }
+	public void setNbsalaries(int nbsalaries) {
+		this.nbsalaries = nbsalaries;
+	}
 
-    public void setLF(LieuFormation LF) {
-        this.LF = LF;
-    }
+	@Override
+	public String toString() {
+		return "Agence{" + this.name + "}\t" + "{Nombre salaries : " + this.nbsalaries + "}\t" + "{Lieu Formation : "
+				+ "this.LF.getName()" + "}\t";
+	}
 
-    @Override
-    public String toString() {
-        return "Agence{" + this.name + "}\t"
-                + "{Nombre salaries : " + this.nbsalaries + "}\t"
-                + "{Lieu Formation : " + "this.LF.getName()" + "}\t"
-                + "{Distance : " + "this.distance(this.LF)" + "km}";
-    }
+	public boolean peutAller(LieuFormation LF) {
+		return LieuFormation._CAPACITEMAXIMALE_ - LF.getNbaccueillis() < this.nbsalaries ? false : true;
+	}
 
-    public boolean peutAller(LieuFormation LF) {
-        return LieuFormation._CAPACITEMAXIMALE_ - LF.getNbaccueillis() < this.nbsalaries ? false : true;
-    }
+	public ArrayList<Integer> getVoisin(List<LieuFormation> LLF, List<Agence> LA, int[] tab, int indice) {
+		ArrayList<Integer> voisinage = new ArrayList();
+		for (int i = 0; i < LLF.size(); i++) {
 
-    public boolean changementAffectation(LieuFormation LF) {
-        if (!this.peutAller(LF) || LF == this.LF) {
-            return false;
-        }
-        if (this.LF != null) {
-            this.LF.remove(this);
-        }
-        this.LF = LF;
-        this.LF.add(this);
+			int ouvert = 0;
+			for (int j = 0; j < tab.length; j++) {
+				if (indice != j) {
+					if (tab[j] == i) {
+						ouvert++;
+					}
 
-        return true;
-    }
+				}
 
-    public ArrayList<LieuFormation> getVoisin(List<LieuFormation> LLF) {
-        ArrayList<LieuFormation> Voisinage = new ArrayList();
-        for (LieuFormation LF : LLF) {
-            if (LF != this.LF && (LF.isOpen() || (this.distance(LF) < 100))) {
-                Voisinage.add(LF);
-            }
-        }
+			}
+			if (ouvert < 1 || LLF.get(i).distance(LA.get(tab[indice])) < 100) {
+				voisinage.add(i);
+			}
 
-        return Voisinage;
-    }
+		}
+		return voisinage;
+
+	}
 }

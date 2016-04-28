@@ -1,22 +1,19 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
-
-
 public class Tabou {
 
 	private ArrayList<Agence> LA = new ArrayList<Agence>();
 	private ArrayList<LieuFormation> LFF = new ArrayList<LieuFormation>();
-	private ArrayList<Integer> voisinPrix = new ArrayList<Integer>();
-	private ArrayList<Integer> listTabou = new ArrayList<Integer>();
-	
-	private ArrayList<Agence> temp = new ArrayList<Agence>();
-	
-	private ArrayList<LieuFormation> bestSolution = new ArrayList<LieuFormation>();
 	private int iteration;
 	private int tailleTabou;
-	private double bestResult = 0;
-	private double currentResult;
+	private ArrayList<Integer> listTabou = new ArrayList<Integer>();
+	private int[] solutionActuelle = new int[LA.size()];
+	private int[] bestSolution = new int[LA.size()];
+	private int[] voisinage = new int[LA.size()]; // tableau renvoyant le changement de l'entreprise avec son lieu de formation
+	private double[] valueVoisin = new double[LA.size()];
+	private double bestPrice ;
+	private int bestVoisin; //indice de l'entreprise choisis pour le changement 
 
 	/*
 	 * Initialisation de la méthode Tabou
@@ -33,64 +30,55 @@ public class Tabou {
 	 * Running de la méthode Tabou
 	 */
 	public void runTabou() {
+		
+		solutionInit(LA, LFF, solutionActuelle);
+		bestPrice = Calcul.prix(solutionActuelle, LA, LFF);
+		bestSolution = solutionActuelle;
 
-		solutionInit(LA, LFF); // On répartie aléatoirement les agences dans les
-								// lieux de formation
-		currentResult = Calcul.prix(LFF);
-		bestResult = currentResult;
-		Collections.copy(LFF,bestSolution);
-		int meilleurVoisin = 0;
+		for (int x = 0; x < iteration; x++) {
 
-		for (int i = 0; i < iteration; i++) {
-
-			temp.addAll(LA);
-			getVoisinage(temp, LFF); // permet de stocker dans temp lesmodifications de chaque Agence
-			meilleurVoisin = meilleurVoisin(voisinPrix);
+			for (int i = 0; i < voisinage.length; i++) {
+				voisinage[i] = getVoisinage(i);
+			}
+						
+			bestVoisin = meilleurVoisin();
 			
-			if ( voisinPrix.get(meilleurVoisin) >= currentResult){
-				listTabou.add(meilleurVoisin);
+			if ( valueVoisin[bestVoisin] > bestPrice) {
+				if (listTabou.size() == tailleTabou) {
+					listTabou.remove(0);
+					listTabou.add(bestVoisin);
+				}
+				else listTabou.add(bestVoisin);
 			}
 			
-			else if (voisinPrix.get(meilleurVoisin) < bestResult){
-				bestResult = voisinPrix.get(meilleurVoisin);
-				
+			if ( valueVoisin[bestVoisin] < bestPrice) {
+				bestPrice = valueVoisin[bestVoisin]; 
+				LFF.get(voisinage[bestVoisin]).setNbaccueillis(LFF.get(solutionActuelle[bestVoisin]).getNbaccueillis() - LA.get(bestVoisin).getNbsalaries());
+				LFF.get(voisinage[bestVoisin]).setNbaccueillis(LFF.get(voisinage[bestVoisin]).getNbaccueillis() + LA.get(bestVoisin).getNbsalaries());
+				bestSolution[bestVoisin] = voisinage[bestVoisin];
 			}
 			
+			solutionActuelle[bestVoisin] = voisinage[bestVoisin];
 			
-										
+			
+			
 		}
 
 	}
 
-	public void getVoisinage(ArrayList<Agence> temp, ArrayList<LieuFormation> LF) {
-		for (Agence a : temp) {
-			ArrayList<LieuFormation> voisin = new ArrayList<LieuFormation>();
-			voisin = a.getVoisin(LF);
-			a.setLF(voisin.get(0)); // A améliorer
-		}
+	/*
+	 * choix du voisinage et calcul de celui-ci dans valueVoisin
+	 */
+	public int getVoisinage(int i) {
+		return 1;
+	}
+
+	public void solutionInit(ArrayList<Agence> LA, ArrayList<LieuFormation> LFF, int[] tab) {
 
 	}
 
-	public void solutionInit(ArrayList<Agence> LA, ArrayList<LieuFormation> LF) {
-
-		for (Agence A : LA) {
-			int random = (int) (LF.size() * Math.random());
-			A.changementAffectation(LF.get(random));
-		}
-
-	}
-
-	public int meilleurVoisin(ArrayList<Integer> value) {
-		int min = Integer.MAX_VALUE;
-		int solution = 0;
-		for (int i = 0; i < value.size(); i++) {
-			if (min > value.get(i) && listTabou.contains(i)) {
-				solution = i;
-				min = value.get(i);
-			}
-
-		}
-		return solution;
+	public int meilleurVoisin() {
+		return 0;
 	}
 
 }

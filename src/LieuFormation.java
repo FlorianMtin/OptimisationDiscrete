@@ -13,88 +13,40 @@ import java.util.List;
  */
 public class LieuFormation extends Lieu {
 
-    public static final int _CAPACITEMAXIMALE_ = 60;
-    public static final int _COUTFORMATEUR = 2000;
-    public static final int _COUTLOCATION = 1000;
+	public static final int _CAPACITEMAXIMALE_ = 60;
+	public static final int _COUTFORMATEUR = 2000;
+	public static final int _COUTLOCATION = 1000;
 
-    private int nbaccueillis;
-    private List<Agence> LA;
-    private boolean open;
+	private int nbaccueillis;
 
-    public LieuFormation(String id, String name, int codepostale, float longitude, float latitude) {
-        super(id, name, codepostale, longitude, latitude);
-        this.nbaccueillis = 0;
-        LA = new ArrayList();
-        open = false;
-    }
+	public LieuFormation(String id, String name, int codepostale, float longitude, float latitude) {
+		super(id, name, codepostale, longitude, latitude);
+		this.nbaccueillis = 0;
 
-    public LieuFormation(LieuFormation LF) {
-        super(LF.getId(), LF.getName(), LF.getCodepostale(), LF.getLongitude(), LF.getLatitude());
-        this.nbaccueillis = LF.getNbaccueillis();
-        this.open = LF.isOpen();
-        this.LA = null;
-    }
+	}
 
-    public int getNbaccueillis() {
-        return nbaccueillis;
-    }
+	public LieuFormation(LieuFormation LF) {
+		super(LF.getId(), LF.getName(), LF.getCodepostale(), LF.getLongitude(), LF.getLatitude());
+		this.nbaccueillis = LF.getNbaccueillis();
 
-    public void setNbaccueillis(int nbaccueillis) {
-        this.nbaccueillis = nbaccueillis;
-    }
+	}
 
-    public List<Agence> getLA() {
-        return LA;
-    }
+	public int getNbaccueillis() {
+		return nbaccueillis;
+	}
 
-    public void setLA(List<Agence> LA) {
-        this.LA = LA;
-    }
+	public void setNbaccueillis(int nbaccueillis) {
+		this.nbaccueillis = nbaccueillis;
+	}
 
-    public boolean isOpen() {
-        return open;
-    }
+	@Override
+	public String toString() {
+		return "LieuFormation{" + this.name + "}\t"  + "{Accueil : " + this.nbaccueillis
+				+ "}\t" + "}";
+	}
 
-    public void setOpen(boolean open) {
-        this.open = open;
-    }
+	public boolean peutAccueillir(Agence A) {
+		return _CAPACITEMAXIMALE_ - this.nbaccueillis < A.getNbsalaries() ? false : true;
+	}
 
-    @Override
-    public String toString() {
-        return "LieuFormation{" + this.name + "}\t"
-                + "{" + this.open + "}\t"
-                + "{Accueil : " + this.nbaccueillis + "}\t"
-                + "{Nombre Agences : " + this.getLA().size() + "}";
-    }
-
-    public boolean peutAccueillir(Agence A) {
-        return _CAPACITEMAXIMALE_ - this.nbaccueillis < A.getNbsalaries() ? false : true;
-    }
-
-    public boolean add(Agence A) {
-        if (!this.peutAccueillir(A) || this.LA.contains(A)) {
-            return false;
-        }
-        if (!this.open) {
-            this.open = true;
-        }
-        this.LA.add(A);
-        this.nbaccueillis += A.getNbsalaries();
-        A.changementAffectation(this);
-
-        return true;
-    }
-
-    public boolean remove(Agence A) {
-        if (!this.LA.contains(A)) {
-            return false;
-        }
-        this.LA.remove(A);
-        this.nbaccueillis -= A.getNbsalaries();
-        if (this.nbaccueillis == 0) {
-            this.open = false;
-        }
-
-        return true;
-    }
 }

@@ -61,7 +61,7 @@ public class Run {
 						word = line.split(";");
 						String cp = word[2].replaceAll("\"", "").substring(0, 5);
 						Agence current = new Agence(word[0], word[1], Integer.parseInt(cp), Float.parseFloat(word[3]),
-								Float.parseFloat(word[4]), Integer.parseInt(word[5]), null);
+								Float.parseFloat(word[4]), Integer.parseInt(word[5]));
 						ListAgence.add(current);
 					}
 

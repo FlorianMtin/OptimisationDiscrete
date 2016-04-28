@@ -1,5 +1,4 @@
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,44 +13,26 @@ import java.util.List;
  * @author Adrien
  */
 public class Calcul {
-    
-    public static final double _COUTKILOMETRE_ = 0.4;
-    
-    public static double prix (List<LieuFormation> LLF){
-        double prix = 0;
-        
-        for (LieuFormation LF : LLF){
-            if(LF.isOpen())
-            {
-                prix += LieuFormation._COUTFORMATEUR;
-                prix += LieuFormation._COUTLOCATION;
-                ArrayList<Agence> LA = (ArrayList<Agence>) LF.getLA();
-                for (Agence A : LA){
-                    prix += A.getNbsalaries() * 2 * A.distance(LF) * _COUTKILOMETRE_;
-                }
-            }
-        }
-        
-        return  prix;
-    }
-    
-    public static double prixLA(List<Agence> LA){
-    	double prix = 0; 
-    	List<LieuFormation> LFF = new ArrayList<LieuFormation>();
-    	for (Agence a : LA){
-    		if (LFF.contains(a.getLF())){
-    			prix += a.getNbsalaries() * 2 * a.distance(a.getLF()) * _COUTKILOMETRE_;
-    		}
-    		
-    		else {
-    			LFF.add(a.getLF());
-    			prix += LieuFormation._COUTFORMATEUR;
-                prix += LieuFormation._COUTLOCATION;
-                prix += a.getNbsalaries() * 2 * a.distance(a.getLF()) * _COUTKILOMETRE_;
-    			
-    		}
-    	}
-    	return prix;
-    }
-    
+
+	public static final double _COUTKILOMETRE_ = 0.4;
+
+	public static double prix(int[] tab, ArrayList<Agence> LA, ArrayList<LieuFormation> LF) {
+		double prix = 0;
+		for (int i = 0; i < tab.length; i++) {
+			List<LieuFormation> LFF = new ArrayList<LieuFormation>();
+
+			if (LFF.contains(LF.get(tab[i]))) {
+				prix += LA.get(i).getNbsalaries() * 2 * LA.get(i).distance(LF.get(tab[i])) * _COUTKILOMETRE_;
+			}
+
+			else {
+				LFF.add(LF.get(tab[i]));
+				prix += LieuFormation._COUTFORMATEUR;
+				prix += LieuFormation._COUTLOCATION;
+
+			}
+		}
+		return prix;
+	}
+
 }
