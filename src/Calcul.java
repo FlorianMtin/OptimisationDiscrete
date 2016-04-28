@@ -31,7 +31,7 @@ public class Calcul {
             }
         }
         
-        returns prix;
+        return prix;
     }
     
 }
