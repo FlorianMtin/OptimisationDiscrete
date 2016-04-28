@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Run {
 
@@ -77,8 +78,18 @@ public class Run {
 		} catch (FileNotFoundException exception) {
 			System.out.println("Le fichier n'a pas été trouvé");
 		}
+		
+		System.out.println("Rentrez le nombre d'iteration voulu : \n ");
+		Scanner scan = new Scanner(System.in);
+		int ite = Integer.parseInt(scan.nextLine());
+		System.out.println("Rentrez la taille du tableau Tabou voulu : \n ");
+		Scanner scan2 = new Scanner(System.in);
+		int size = Integer.parseInt(scan.nextLine());
+		Tabou tab = new Tabou(ite,size);
+		tab.runTabou(ListAgence, ListFormation);
+		
 
-		System.out.println(ListAgence.get(0).toString());
+		
 
 	}
 }

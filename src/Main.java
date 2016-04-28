@@ -18,7 +18,7 @@ public class Main {
 		System.out.println("b: Test avec le jeu de 300 Agences");
 		System.out.println("c : Test avec le jeu de 500 Agences");
 		System.out.println("d : Test avec votre jeu d'Agences");
-		System.out.println("e : Quitter");
+		System.out.println("e : Quitter \n ");
 		Scanner scan = new Scanner(System.in);
 		String choice = scan.nextLine();
 		Run myRun = new Run();
@@ -48,5 +48,7 @@ public class Main {
 		} while (choice == "e");
 
 	}
+	
+	
 
 }
