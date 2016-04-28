@@ -12,7 +12,17 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		// Mise en place de l'algo et lancement du Run
-
+            Agence A = new Agence("t", "t", 10, 10, 10, 0, null);
+            ArrayList<Agence> LA = new ArrayList();
+            
+            LA.add(new Agence(A));
+            A.setCodepostale(10000);
+            System.out.println(LA.get(0).toString());
+            
+            
+            
+            
+/*
 		System.out.println("Faire quel test?  ");
 		System.out.println("a : Test avec le jeu de 100 Agences");
 		System.out.println("b: Test avec le jeu de 300 Agences");
@@ -40,13 +50,13 @@ public class Main {
 			/*
 			 * Remplacer Votrefichier par le nom de votre fichier txt
 			 */
-			case "d":
+/*			case "d":
 				myRun.run("src/Database/Votrefichier.txt");
 				break;
 			}
 
 		} while (choice == "e");
-
+*/
 	}
 	
 	
