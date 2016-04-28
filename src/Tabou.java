@@ -33,7 +33,7 @@ public class Tabou {
 		for (int i = 0; i < iteration; i++) {
 
 			temp.addAll(LA);
-		    temp.getVoisinage(valueVoisinage);
+		    getVoisinage(temp,LF);
 			indiceElu = meilleurVoisin(valueVoisinage);
 
 			if (valueVoisinage.get(indiceElu) > meilleurResultat) {
@@ -54,9 +54,18 @@ public class Tabou {
 		}
 
 	}
+	
+	public void getVoisinage(ArrayList<Agence> temp, ArrayList<LieuFormation> LF){
+		for ( Agence a : temp){
+			ArrayList<LieuFormation> voisin = new ArrayList<LieuFormation>();
+			voisin = a.getVoisin(LF);
+			a.changementAffectation(voisin.get(0));
+		}
+		
+	}
 
 	public void solutionInit(ArrayList<Agence> LA, ArrayList<LieuFormation> LF) {
-
+			
 	}
 
 	public int meilleurVoisin(ArrayList<Integer> value) {
