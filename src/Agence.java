@@ -39,7 +39,7 @@ public class Agence extends Lieu {
 		return LieuFormation._CAPACITEMAXIMALE_ - LF.getNbaccueillis() < this.nbsalaries ? false : true;
 	}
 
-	public ArrayList<Integer> getVoisin(List<LieuFormation> LLF, List<Agence> LA, int[] tab, int indice) {
+	public ArrayList<Integer> getVoisin(List<LieuFormation> LLF, int[] tab, int indice) {
 		ArrayList<Integer> voisinage = new ArrayList();
 		for (int i = 0; i < LLF.size(); i++) {
 
@@ -53,9 +53,10 @@ public class Agence extends Lieu {
 				}
 
 			}
-			// if peut acceuillir TODO 
-			if (ouvert < 1 || LLF.get(i).distance(LA.get(tab[indice])) < 100 ) {
-				voisinage.add(i);
+			if (LLF.get(i).peutAccueillir(this)) {
+				if (ouvert < 1 || LLF.get(i).distance(this) < 100) {
+					voisinage.add(i);
+				}
 			}
 
 		}
