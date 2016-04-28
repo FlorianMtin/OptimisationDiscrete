@@ -21,6 +21,12 @@ public class Agence extends Lieu {
         this.nbsalaries = nbsalaries;
         this.LF = LF;
     }
+    
+    public Agence(Agence A){
+        super(A.getId(), A.getName(), A.getCodepostale(), A.getLongitude(), A.getLatitude());
+        this.nbsalaries = A.getNbsalaries();
+        this.LF = null;
+    }
 
     public int getNbsalaries() {
         return nbsalaries;
@@ -63,15 +69,11 @@ public class Agence extends Lieu {
         return true;
     }
 
-    
-    public ArrayList<LieuFormation> getVoisin (List<LieuFormation> LLF){
+    public ArrayList<LieuFormation> getVoisin(List<LieuFormation> LLF) {
         ArrayList<LieuFormation> Voisinage = new ArrayList();
-        
-        for (LieuFormation LF : LLF){
-            if (LF != this.LF && (LF.isOpen() || (this.distance(LF) < 100))){
-
-
-                   Voisinage.add(LF);
+        for (LieuFormation LF : LLF) {
+            if (LF != this.LF && (LF.isOpen() || (this.distance(LF) < 100))) {
+                Voisinage.add(LF);
             }
         }
 

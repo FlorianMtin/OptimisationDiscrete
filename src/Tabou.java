@@ -84,7 +84,7 @@ public class Tabou {
 		int min = Integer.MAX_VALUE;
 		int solution = 0;
 		for (int i = 0; i < value.size(); i++) {
-			if (min > value.get(i) && listeTabou.contains(i)) {
+			if (min > value.get(i) && listTabou.contains(i)) {
 				solution = i;
 				min = value.get(i);
 			}

@@ -28,6 +28,13 @@ public class LieuFormation extends Lieu {
         open = false;
     }
 
+    public LieuFormation(LieuFormation LF) {
+        super(LF.getId(), LF.getName(), LF.getCodepostale(), LF.getLongitude(), LF.getLatitude());
+        this.nbaccueillis = LF.getNbaccueillis();
+        this.open = LF.isOpen();
+        this.LA = null;
+    }
+
     public int getNbaccueillis() {
         return nbaccueillis;
     }
