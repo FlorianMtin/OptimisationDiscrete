@@ -9,11 +9,11 @@
  * @author Adrien
  */
 public abstract class Lieu {
+    protected String id;
+    protected String name;
+    protected int codepostale;
     protected float longitude;
     protected float latitude;
-    protected int codepostale;
-    protected String name;
-    protected String id;
     
     public Lieu (String id , String name, int codepostale, float longitude, float latitude)
     {
@@ -74,6 +74,5 @@ public abstract class Lieu {
 
     public void setId(String id) {
         this.id = id;
-    }
-    
+    }    
 }

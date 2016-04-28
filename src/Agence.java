@@ -8,11 +8,11 @@
  *
  * @author Adrien
  */
-public class Agence extends Lieu{
+public class Agence extends Lieu {
 
     private int nbsalaries;
     private LieuFormation LF;
-    
+
     public Agence(String id, String name, int codepostale, float longitude, float latitude, int nbsalaries, LieuFormation LF) {
         super(id, name, codepostale, longitude, latitude);
         this.nbsalaries = nbsalaries;
@@ -39,8 +39,24 @@ public class Agence extends Lieu{
     public String toString() {
         return "Agence{" + this.name + "}\t"
                 + "{Nombre salaries : " + this.nbsalaries + "}\t"
-                + "{Lieu Formation : " + "this.LF.getName()" + "}\t"
-                + "{Distance : " + "this.distance(this.LF)" + "km}";
+                + "{Lieu Formation : " + this.LF.getName() + "}\t"
+                + "{Distance : " + this.distance(this.LF) + "km}";
     }
-    
+
+    public boolean peutAller(LieuFormation LF) {
+        return LieuFormation._CAPACITEMAXIMALE_ - LF.getNbaccueillis() < this.nbsalaries ? false : true;
+    }
+
+    public boolean changementAffectation(LieuFormation LF) {
+        if (this.peutAller(LF) == false || LF == this.LF) {
+            return false;
+        }
+        if (!LF.isOpen()) {
+            LF.setOpen(true);
+        }
+        this.setLF(LF);
+        this.LF.add(this);
+        
+        return true;
+    }
 }

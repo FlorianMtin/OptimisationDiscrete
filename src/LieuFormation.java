@@ -61,4 +61,24 @@ public class LieuFormation extends Lieu{
                 + "{Nombre Agences : " + this.getLA().size() + "}";
     }
     
+    
+    
+   
+    public boolean peutAccueillir (Agence A){
+        return _CAPACITEMAXIMALE_ - this.nbaccueillis < A.getNbsalaries() ?  false : true;
+    }
+    
+    public boolean add (Agence A){
+        if (this.peutAccueillir(A) == false || this.LA.contains(A)) {
+            return false;
+        }
+        if (!this.open){
+            this.open = true;
+        }
+        this.LA.add(A);
+        this.nbaccueillis += A.getNbsalaries();
+        A.changementAffectation(this);
+        
+        return true;
+    }
 }
