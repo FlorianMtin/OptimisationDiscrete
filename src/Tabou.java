@@ -23,43 +23,29 @@ public class Tabou {
 	 * Running de la méthode Tabou
 	 */
 	public void runTabou(ArrayList<Agence> LA, ArrayList<LieuFormation> LF) {
-		// System.out.println(iteration + " " + tailleTabou);
-
+		
 		solutionInit(LA, LF); // On répartie aléatoirement les agences dans les
 								// lieux de formation
-		Integer indiceElu;
-		meilleurSolutionF.addAll(LF);
-		ArrayList<Agence> temp = new ArrayList<Agence>();
-		for (int i = 0; i < iteration; i++) {
+		
 
-			temp.addAll(LA);
-		    temp.getVoisinage(valueVoisinage);
-			indiceElu = meilleurVoisin(valueVoisinage);
-
-			if (valueVoisinage.get(indiceElu) > meilleurResultat) {
-				if (listeTabou.size() >= tailleTabou) {
-					listeTabou.remove(0);
-					listeTabou.add(temp.get(indiceElu));
-
-				} else
-					listeTabou.add(temp.get(indiceElu));
-			} else {
-				if (valueVoisinage.get(indiceElu) < meilleurResultat) {
-					LA.remove(indiceElu);
-					LA.add(indiceElu, temp.get(indiceElu));
-					temp.clear();
-				}
-			}
-
+	}
+	
+	public void getVoisinage(ArrayList<Agence> temp, ArrayList<LieuFormation> LF){
+		for ( Agence a : temp){
+			ArrayList<LieuFormation> voisin = new ArrayList<LieuFormation>();
+			voisin = a.getVoisin(LF);
+			a.changementAffectation(voisin.get(0));
 		}
-
+		
 	}
 
 	public void solutionInit(ArrayList<Agence> LA, ArrayList<LieuFormation> LF) {
+
             for (Agence A : LA){
                 int random = (int)(LF.size()*Math.random());
                 A.changementAffectation(LF.get(random));
             }
+
 	}
 
 	public int meilleurVoisin(ArrayList<Integer> value) {

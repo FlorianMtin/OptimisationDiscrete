@@ -63,12 +63,15 @@ public class Agence extends Lieu {
         return true;
     }
 
-    public List<Lieu> getVoisin(List<LieuFormation> LLF) {
-        ArrayList<Lieu> Voisinage = new ArrayList();
+    
+    public ArrayList<LieuFormation> getVoisin (List<LieuFormation> LLF){
+        ArrayList<LieuFormation> Voisinage = new ArrayList();
+        
+        for (LieuFormation LF : LLF){
+            if (LF != this.LF && (LF.isOpen() || (this.distance(LF) < 100))){
 
-        for (LieuFormation LF : LLF) {
-            if (LF != this.LF && (LF.isOpen() || (this.distance(LF) < 100))) {
-                Voisinage.add(LF);
+
+                   Voisinage.add(LF);
             }
         }
 
