@@ -53,7 +53,8 @@ public class Agence extends Lieu {
 				}
 
 			}
-			if (ouvert < 1 || LLF.get(i).distance(LA.get(tab[indice])) < 100) {
+			// if peut acceuillir TODO 
+			if (ouvert < 1 || LLF.get(i).distance(LA.get(tab[indice])) < 100 ) {
 				voisinage.add(i);
 			}
 
